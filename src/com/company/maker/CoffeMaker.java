@@ -1,5 +1,8 @@
 package com.company.maker;
 
+import java.io.FileWriter;
+import java.io.IOException;
+
 public class CoffeMaker {
 
 
@@ -30,7 +33,7 @@ public class CoffeMaker {
     public void makeCoffe(String coffeType) {
 
         StringBuilder builder = new StringBuilder("");
-        switch (coffeType.toLowerCase()) {
+        switch (coffeType) {
             case "black":
                 sugarAmount -= 10;
                 beansAmount -= 20;
@@ -90,7 +93,7 @@ public class CoffeMaker {
                 builder.append("   `~'");
                 break;
         }
-        if(!builder.equals("")) {
+        if (!builder.equals("")) {
             System.out.println(builder.toString());
             useCount++;
             sugarAmount = Math.max(sugarAmount, 0);
@@ -130,19 +133,84 @@ public class CoffeMaker {
 
 
     public void showProducts() {
-        System.out.println("=========Product status=========");
-        System.out.println("Sugar amount left:" + sugarAmount);
-        System.out.println("Water amount left:" + waterAmount);
-        System.out.println("Beans amount left:" + beansAmount);
+        StringBuilder builder2 = new StringBuilder("");
+        builder2.append("=========Product status=========" + "\n");
+        builder2.append("Sugar amount left:" + sugarAmount + "\n");
+        builder2.append("Water amount left:" + waterAmount + "\n");
+        builder2.append("Beans amount left:" + beansAmount);
+        if (!builder2.equals("")) {
+            System.out.println(builder2.toString());
+            useCount++;
+        }
+        String a = builder2.toString();
+//        System.out.println("=========Product status=========");
+//        System.out.println("Sugar amount left:" + sugarAmount);
+//        System.out.println("Water amount left:" + waterAmount);
+//        System.out.println("Beans amount left:" + beansAmount);
 
     }
 
 
     public void showStatus() {
-        System.out.println("=========Maker status============");
-        System.out.println("Usages left:" + (MAX_USES - this.useCount));
-        System.out.println("is machine ready:" + isReady());
+        StringBuilder builder1 = new StringBuilder("");
+        builder1.append("=========Maker status============" + "\n");
+        builder1.append("Usages left:" + (MAX_USES - this.useCount) + "\n");
+        builder1.append("is machine ready:" + isReady());
+        if (!builder1.equals("")) {
+            System.out.println(builder1.toString());
+            useCount++;
+        }
         this.showProducts();
+
+        String b = builder1.toString();
+
+    }
+
+    public void ivesk() {
+
+        StringBuilder builder1 = new StringBuilder("");
+        builder1.append("=========Product status=========");
+        builder1.append("\n");
+        builder1.append("Sugar amount left:");
+        builder1.append(sugarAmount);
+        builder1.append("\n");
+        builder1.append("Water amount left:");
+        builder1.append(waterAmount);
+        builder1.append("\n");
+        builder1.append("Beans amount left:");
+        builder1.append(beansAmount);
+        builder1.append("\n");
+        builder1.append("=========Maker status============");
+        builder1.append("\n");
+        builder1.append("Usages left:");
+        builder1.append(MAX_USES - this.useCount);
+        builder1.append("\n");
+        builder1.append("is machine ready:");
+        builder1.append(isReady());
+        builder1.append("\n");
+        if (!builder1.equals("")) {
+            System.out.println(builder1.toString());
+            useCount++;
+        }
+        this.showProducts();
+
+        FileWriter writer = null;
+        try {
+            writer = new FileWriter("duomenys.txt");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            writer.write(builder1.toString());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
 
