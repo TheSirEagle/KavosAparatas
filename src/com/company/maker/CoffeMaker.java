@@ -30,7 +30,7 @@ public class CoffeMaker {
     public void makeCoffe(String coffeType) {
 
         StringBuilder builder = new StringBuilder("");
-        switch (coffeType.toLowerCase()) {
+        switch (coffeType) {
             case "black":
                 sugarAmount -= 10;
                 beansAmount -= 20;
