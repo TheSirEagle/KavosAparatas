@@ -1,7 +1,7 @@
 =========Product status=========
-Sugar amount left:22222.0
-Water amount left:11111.0
-Beans amount left:2222.0
+Sugar amount left:3.0
+Water amount left:3.0
+Beans amount left:3.0
 =========Maker status============
-Usages left:3
+Usages left:5
 is machine ready:true

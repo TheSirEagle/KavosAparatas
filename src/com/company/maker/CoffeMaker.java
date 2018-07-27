@@ -5,6 +5,16 @@ import java.io.IOException;
 
 public class CoffeMaker {
 
+    private static CoffeMaker firstInstance = null;
+
+    private CoffeMaker(){}
+
+    public static CoffeMaker getInstance(){
+        if (firstInstance == null){
+            firstInstance = new CoffeMaker();
+        }
+    }
+
 
     public static final int MAX_USES = 5;
     private float sugarAmount;
@@ -13,10 +23,8 @@ public class CoffeMaker {
     private int useCount;
 
 
-    public CoffeMaker() {
-    }
 
-    public CoffeMaker(float water, float sugar, float beans) {
+    private CoffeMaker(float water, float sugar, float beans) {
         waterAmount = water;
         sugarAmount = sugar;
         beansAmount = beans;
