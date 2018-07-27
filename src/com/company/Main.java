@@ -2,11 +2,14 @@ package com.company;
 
 import com.company.maker.CoffeMaker;
 
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
+
+    /*
+        Sukurti meniu punkta kuris leistu aparato busena issaugoti tekstiniame faile
+        panaudoti git branch ir github pull request
+     */
 
     public static void main(String[] args) {
         Main obj = new Main();
@@ -19,7 +22,7 @@ public class Main {
         System.out.println("2 - rodyti aparato busena");
         System.out.println("3 - plauti aparata");
         System.out.println("4 - pildyti produktus");
-        System.out.println("5 - ivesti statusa i faila");
+        System.out.println("5 - saugoti status i faila");
     }
 
     private void dirbam() {
@@ -34,10 +37,10 @@ public class Main {
                     arTesti = false;
                     break;
                 case 1:
-                    if (aparatas.isReady()) {
+                    if(aparatas.isReady()) {
                         System.out.println("Iveskite kavos pavadinima: black, latte arba espresso");
                         String name = sc.next();
-                        aparatas.makeCoffe(name.toLowerCase());
+                        aparatas.proccessChoice(name.toLowerCase());
                     }
                     break;
                 case 2:
@@ -48,17 +51,16 @@ public class Main {
                     break;
                 case 4:
                     System.out.println("Iveskite kiek pildome vandens(l)");
-                    float water = sc.nextFloat();
+                    float water =sc.nextFloat();
                     System.out.println("Iveskite kiek pildome cukraus(g)");
                     float sugar = sc.nextFloat();
                     System.out.println("Ivesite kiek pildome pupeliu(g)");
                     float beans = sc.nextFloat();
-                    aparatas.fillProducts(water, sugar, beans);
+                    aparatas.fillProducts(water,sugar,beans);
                     break;
                 case 5:
-                    aparatas.ivesk();
+                    aparatas.saveStatus();
                     break;
-
             }
 
         } while (arTesti);
